@@ -7,5 +7,14 @@ module.exports = {
    output: {
    	path: path.join(__dirname, 'static/js'),//вывод
    	filename: 'bundle.js'
+   },
+   presets:[
+   ['es2015', {'modules': false}]
+   ],
+   module: {
+   	loaders: [
+   	{test: /\.js$/, loader: 'babel-loader'}
+
+   	]
    }
 }
