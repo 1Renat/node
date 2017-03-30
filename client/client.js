@@ -1,14 +1,24 @@
-<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom';
 //Импорт библиотек из нод_моделс
 import App from './components/app.js'
 //Импорт компонента
+import {Provider} from 'react-redux'
+import {createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import reducer from '../reducers/index.js';
+import sagas from '../side-effects/index.js'
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(sagas);
+
 
 ReactDOM.render(
-	<App />,
+	<Provider store={store}>
+		<App />,
+	<Provider>
 	document.getElementById('root')
 	);
-=======
-alert('adad');
->>>>>>> 6711e2164158f17924a6a63a5cb00e4958c77ba2
+
+

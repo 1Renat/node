@@ -19,7 +19,8 @@ export default class App extends Component {
 		})
 	}
 	sendNewUser( {
-		request.post('/users')
+		request 
+				.post('/users')
 				.send(this.state.name)
 				.end((err, res) => {
 					if(err) return console.log(err)
